@@ -3,9 +3,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BulkBuilder.Application.Abstractions;
 using BulkBuilder.Application.WorkoutBuilder.Exercises.Models;
+using BulkBuilder.Application.WorkoutBuilder.Exercises.Requests;
 using BulkBuilder.Domain.Entities;
 
-namespace BulkBuilder.Application.WorkoutBuilder.Exercises.Commands.Create
+namespace BulkBuilder.Application.WorkoutBuilder.Exercises.Handlers
 {
     public class CreateExerciseHandler : BaseRequestHandler<CreateExercise, ExerciseDto>
     {

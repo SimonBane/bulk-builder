@@ -28,7 +28,7 @@ namespace BulkBuilder.Infrastructure.Repositories
 
         public async Task<TResult> ProjectToAsync<TResult>(Expression<Func<T, bool>> filter = null)
         {
-            return await Project<TResult>().FirstOrDefaultAsync();
+            return await Project<TResult>(filter).FirstOrDefaultAsync();
         }
 
         private IQueryable<TResult> Project<TResult>(Expression<Func<T, bool>> filter = null)

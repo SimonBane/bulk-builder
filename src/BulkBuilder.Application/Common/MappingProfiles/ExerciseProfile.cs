@@ -10,6 +10,7 @@ namespace BulkBuilder.Application.Common.MappingProfiles
         {
             CreateMap<Exercise, ExerciseDto>();
             CreateMap<ExerciseCreateDto, Exercise>();
+            CreateMap<ExerciseUpdateDto, Exercise>();
         }
     }
 }

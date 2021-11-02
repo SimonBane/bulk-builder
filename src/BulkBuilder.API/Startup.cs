@@ -1,3 +1,4 @@
+using System.Text.Json;
 using BulkBuilder.Application;
 using BulkBuilder.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -25,7 +26,11 @@ namespace BulkBuilder.API
             services.AddInfrastructure(Configuration);
 
             services.AddControllers()
-                .AddJsonOptions(opts => opts.JsonSerializerOptions.IgnoreNullValues = true);
+                .AddJsonOptions(opts =>
+                {
+                    opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                    opts.JsonSerializerOptions.IgnoreNullValues = true;
+                });
 
             services.AddSwaggerGen(c =>
             {
@@ -49,12 +54,12 @@ namespace BulkBuilder.API
 
             app.UseAuthorization();
 
+            app.UseErrorHandling();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-            app.UseErrorHandling();
 
             app.MigrateDatabase(context);
         }

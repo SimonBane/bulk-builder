@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BulkBuilder.Application.Abstractions;
 using BulkBuilder.Application.WorkoutBuilder.Exercises.Models;
+using BulkBuilder.Application.WorkoutBuilder.Exercises.Requests;
 
-namespace BulkBuilder.Application.WorkoutBuilder.Exercises.Queries.GetAll
+namespace BulkBuilder.Application.WorkoutBuilder.Exercises.Handlers
 {
     public class GetAllExercisesHandler : BaseRequestHandler<GetAllExercises, IEnumerable<ExerciseDto>>
     {

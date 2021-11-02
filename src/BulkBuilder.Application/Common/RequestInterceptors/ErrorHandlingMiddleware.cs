@@ -43,7 +43,14 @@ namespace BulkBuilder.Application.Common.RequestInterceptors
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = errors[0].Code;
 
-            await context.Response.WriteAsync(JsonSerializer.Serialize(errors));
+            var handledResponse = new HandledResponseWrapper
+            {
+                Errors = errors
+            };
+
+            var serializerOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+
+            await context.Response.WriteAsync(JsonSerializer.Serialize(handledResponse, serializerOptions));
         }
 
         private List<Error> GetErrors(Exception exception)

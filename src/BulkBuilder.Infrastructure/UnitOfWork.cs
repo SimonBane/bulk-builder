@@ -2,15 +2,16 @@
 using System.Threading.Tasks;
 using BulkBuilder.Application.Abstractions;
 using BulkBuilder.Application.WorkoutBuilder.Exercises.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BulkBuilder.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
         private bool _isDisposed;
-        private BulkDbContext _dbContext;
+        private DbContext _dbContext;
 
-        public UnitOfWork(BulkDbContext dbContext, IExerciseRepository exercise)
+        public UnitOfWork(DbContext dbContext, IExerciseRepository exercise)
         {
             _dbContext = dbContext;
             Exercise = exercise;

@@ -9,11 +9,6 @@ namespace BulkBuilder.Infrastructure.EntityConfigurations
         public void Configure(EntityTypeBuilder<WorkoutExercise> builder)
         {
             builder.ToTable("WorkoutExercise");
-
-            builder.HasOne<Workout>()
-                .WithMany()
-                .HasForeignKey(we => we.WorkoutId)
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

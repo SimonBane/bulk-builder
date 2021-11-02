@@ -9,7 +9,7 @@ using BulkBuilder.Application.Abstractions;
 using BulkBuilder.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BulkBuilder.Infrastructure.Repositories
+namespace BulkBuilder.Infrastructure.Repositories.Base
 {
     public class ProjectionRepository<T> : BaseRepository<T>, IProjectionRepository<T>
         where T : BaseEntity

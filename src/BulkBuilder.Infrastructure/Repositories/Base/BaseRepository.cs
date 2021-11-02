@@ -4,7 +4,7 @@ using BulkBuilder.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Abstractions;
 
-namespace BulkBuilder.Infrastructure.Repositories
+namespace BulkBuilder.Infrastructure.Repositories.Base
 {
     public class BaseRepository<T> : IRepository<T>
         where T : BaseEntity
@@ -16,12 +16,12 @@ namespace BulkBuilder.Infrastructure.Repositories
             Entity = dbContext.Set<T>();
         }
 
-        public async Task<List<T>> GetAllAsync()
+        public virtual async Task<List<T>> GetAllAsync()
         {
             return await Entity.AsNoTracking().ToListAsync();
         }
 
-        public async Task<T> GetAsync(int id)
+        public virtual async Task<T> GetAsync(int id)
         {
             return await Entity.FindAsync(id);
         }

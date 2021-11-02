@@ -11,10 +11,6 @@ namespace BulkBuilder.Infrastructure.EntityConfigurations
             builder.ToTable("Workout");
 
             builder.Property(w => w.Name).HasMaxLength(200).IsRequired();
-
-            builder.HasMany(w => w.Exercises)
-                .WithOne()
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using BulkBuilder.Application.Abstractions;
 using BulkBuilder.Application.WorkoutBuilder.Exercises.Data;
+using BulkBuilder.Application.WorkoutBuilder.Workouts.Data;
 using BulkBuilder.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,10 @@ namespace BulkBuilder.Infrastructure
 
             services.AddScoped<DbContext, BulkDbContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddScoped<IExerciseRepository, ExerciseRepository>();
+            services.AddScoped<IWorkoutRepository, WorkoutRepository>();
+            services.AddScoped<IWorkoutExerciseRepository, WorkoutExerciseRepository>();
 
             return services;
         }

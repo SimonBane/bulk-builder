@@ -15,8 +15,4 @@
   <ItemGroup>
     <ProjectReference Include="..\BulkBuilder.Domain\BulkBuilder.Domain.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="WorkoutBuilder\Workouts\" />
-  </ItemGroup>
 </Project>

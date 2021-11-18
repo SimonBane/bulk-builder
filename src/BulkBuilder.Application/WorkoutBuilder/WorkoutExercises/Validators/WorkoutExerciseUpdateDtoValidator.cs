@@ -8,7 +8,6 @@ namespace BulkBuilder.Application.WorkoutBuilder.WorkoutExercises.Validators
         public WorkoutExerciseUpdateDtoValidator()
         {
             RuleFor(we => we.Id).NotEmpty();
-            RuleFor(we => we.WorkoutId).NotEmpty();
         }
     }
 }

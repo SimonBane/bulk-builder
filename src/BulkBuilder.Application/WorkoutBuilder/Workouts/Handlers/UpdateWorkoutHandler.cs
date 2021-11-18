@@ -22,7 +22,7 @@ namespace BulkBuilder.Application.WorkoutBuilder.Workouts.Handlers
             if (workout == null)
                 throw new HttpException(NotFound, "Workout does not exist!");
 
-            Mapper.Map(workout, request.Model);
+            Mapper.Map( request.Model, workout);
             await UnitOfWork.CommitAsync();
 
             return Mapper.Map<WorkoutDto>(workout);

@@ -13,8 +13,9 @@ namespace BulkBuilder.Infrastructure
         public DbSet<Exercise> Exercises { get; set; }
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<WorkoutExercise> WorkoutExercises { get; set; }
+        public DbSet<User> Users { get; set; }
 
-        public static readonly ILoggerFactory ConsoleLoggerFactory
+        private static readonly ILoggerFactory ConsoleLoggerFactory
             = LoggerFactory.Create(builder => { builder.AddConsole(); });
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

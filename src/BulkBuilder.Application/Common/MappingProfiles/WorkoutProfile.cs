@@ -13,6 +13,11 @@ namespace BulkBuilder.Application.Common.MappingProfiles
 
             CreateMap<Workout, WorkoutDto>()
                 .ForMember(dto => dto.Exercises, opts => opts.MapFrom(we => we.Exercises));
+
+            CreateMap<WorkoutCreateDto, Workout>()
+                .ForMember(w => w.Exercises, opts => opts.MapFrom(dto => dto.Exercises));
+
+            CreateMap<WorkoutExerciseCreateDto, WorkoutExercise>();
         }
     }
 }

@@ -11,6 +11,11 @@ namespace BulkBuilder.Infrastructure.EntityConfigurations
             builder.ToTable("Workout");
 
             builder.Property(w => w.Name).HasMaxLength(200).IsRequired();
+
+            builder.HasOne(w => w.User)
+                .WithMany()
+                .HasForeignKey(w => w.UserId)
+                .IsRequired();
         }
     }
 }

@@ -6,5 +6,7 @@ namespace BulkBuilder.Domain.Entities
     {
         public string Name { get; set; }
         public List<WorkoutExercise> Exercises { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

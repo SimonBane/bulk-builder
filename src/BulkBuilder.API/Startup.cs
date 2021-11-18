@@ -1,8 +1,12 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using BulkBuilder.API.Configurations;
 using BulkBuilder.Application;
 using BulkBuilder.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,18 +28,17 @@ namespace BulkBuilder.API
         {
             services.AddApplication();
             services.AddInfrastructure(Configuration);
-
+            
             services.AddControllers()
                 .AddJsonOptions(opts =>
                 {
                     opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-                    opts.JsonSerializerOptions.IgnoreNullValues = true;
+                    opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                 });
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BulkBuilder.API", Version = "v1" });
-            });
+            
+            services.UseJwtBearerAuthentication(Configuration);
+            
+            services.AddSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,18 +47,18 @@ namespace BulkBuilder.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BulkBuilder.API v1"));
+                app.UseSwaggerAndUi();
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseErrorHandling();
-
+            
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

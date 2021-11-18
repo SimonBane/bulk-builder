@@ -1,4 +1,5 @@
 ﻿using BulkBuilder.Application.Common.RequestInterceptors;
+using BulkBuilder.Application.Users;
 using BulkBuilder.Application.WorkoutBuilder.Exercises.Models;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -13,9 +14,16 @@ namespace BulkBuilder.Application
         {
             var assembly = typeof(ExerciseDto).Assembly;
 
+            services.AddScoped<IUserContext, UserContext>();
+
+            services.AddMemoryCache();
+
             services.AddAutoMapper(assembly);
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UserContextBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UserExistenceCheckBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
 
             services.AddMediatR(assembly);
             services.AddFluentValidation(opts => opts.RegisterValidatorsFromAssembly(assembly));

@@ -1,9 +1,12 @@
-﻿using BulkBuilder.Domain.Entities;
+﻿using System.Threading.Tasks;
+using BulkBuilder.Application.Abstractions;
+using BulkBuilder.Domain.Entities;
 using Persistence.Abstractions;
 
 namespace BulkBuilder.Application.WorkoutBuilder.Workouts.Data
 {
-    public interface IWorkoutRepository : IRepository<Workout>
+    public interface IWorkoutRepository : IProjectionRepository<Workout>
     {
+        Task<Workout> GetUserWorkout(int userId, int workoutId);
     }
 }

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BulkBuilder.Application.Common.Models;
 using BulkBuilder.Application.WorkoutBuilder.Exercises.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static BulkBuilder.Application.WorkoutBuilder.Exercises.Requests.ExerciseRequests;
 

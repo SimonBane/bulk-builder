@@ -49,7 +49,6 @@ namespace BulkBuilder.Application.Common.RequestInterceptors
             };
 
             var serializerOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-
             await context.Response.WriteAsync(JsonSerializer.Serialize(handledResponse, serializerOptions));
         }
 

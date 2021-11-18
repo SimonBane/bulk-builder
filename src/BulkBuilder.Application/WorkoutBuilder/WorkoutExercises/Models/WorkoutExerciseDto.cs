@@ -1,4 +1,6 @@
-﻿namespace BulkBuilder.Application.WorkoutBuilder.Workouts.Models
+﻿using BulkBuilder.Application.WorkoutBuilder.Exercises.Models;
+
+namespace BulkBuilder.Application.WorkoutBuilder.WorkoutExercises.Models
 {
     public class WorkoutExerciseDto
     {

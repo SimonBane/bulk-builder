@@ -1,4 +1,5 @@
-﻿using BulkBuilder.Application.WorkoutBuilder.Workouts.Data;
+﻿using BulkBuilder.Application.WorkoutBuilder.WorkoutExercises.Data;
+using BulkBuilder.Application.WorkoutBuilder.Workouts.Data;
 using BulkBuilder.Domain.Entities;
 using BulkBuilder.Infrastructure.Repositories.Base;
 using Microsoft.EntityFrameworkCore;

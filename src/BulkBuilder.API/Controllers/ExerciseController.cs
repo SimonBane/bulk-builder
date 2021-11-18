@@ -11,9 +11,11 @@ namespace BulkBuilder.API.Controllers
 {
     [Route("api/exercise")]
     [ApiController]
+    [Authorize]
     public class ExerciseController : BaseController
     {
-        public ExerciseController(IMediator mediator) : base(mediator)
+        public ExerciseController(IMediator mediator) 
+            : base(mediator)
         { }
 
         [HttpGet]

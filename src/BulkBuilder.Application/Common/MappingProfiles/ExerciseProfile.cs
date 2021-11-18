@@ -10,7 +10,9 @@ namespace BulkBuilder.Application.Common.MappingProfiles
         {
             CreateMap<Exercise, ExerciseDto>();
             CreateMap<ExerciseCreateDto, Exercise>();
-            CreateMap<ExerciseUpdateDto, Exercise>();
+            
+            CreateMap<ExerciseUpdateDto, Exercise>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BulkBuilder.Application.WorkoutBuilder.WorkoutExercises.Models;
 
 namespace BulkBuilder.Application.WorkoutBuilder.Workouts.Models
 {

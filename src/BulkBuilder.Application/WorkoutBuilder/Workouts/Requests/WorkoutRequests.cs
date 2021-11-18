@@ -9,5 +9,8 @@ namespace BulkBuilder.Application.WorkoutBuilder.Workouts.Requests
 
         public static CreateWorkout CreateWorkout(int userId, WorkoutCreateDto model) =>
             new() { UserId = userId, Model = model };
+
+        public static DeleteWorkout DeleteWorkout(int userId, int workoutId) =>
+            new() { WorkoutId = workoutId, UserId = userId };
     }
 }

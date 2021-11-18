@@ -12,8 +12,6 @@ namespace BulkBuilder.Application.WorkoutBuilder.Exercises.Handlers
 {
     public class GetAllExercisesHandler : BaseRequestHandler<GetAllExercises, IEnumerable<ExerciseDto>>
     {
-        private readonly IMemoryCache _memoryCache;
-        
         public GetAllExercisesHandler(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork)
         { }
 

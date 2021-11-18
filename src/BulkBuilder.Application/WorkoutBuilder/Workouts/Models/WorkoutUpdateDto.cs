@@ -3,9 +3,9 @@ using BulkBuilder.Application.WorkoutBuilder.WorkoutExercises.Models;
 
 namespace BulkBuilder.Application.WorkoutBuilder.Workouts.Models
 {
-    public class WorkoutCreateDto
+    public class WorkoutUpdateDto
     {
         public string Name { get; set; }
-        public List<WorkoutExerciseCreateDto> Exercises { get; set; }
+        public List<WorkoutExerciseUpdateDto> Exercises { get; set; }
     }
 }
